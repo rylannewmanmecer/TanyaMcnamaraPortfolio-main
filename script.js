@@ -15,13 +15,19 @@ function showPage(pageId, element) {
 
 // ====== 2. MOBILE HAMBURGER MENU ======
 function toggleMenu() {
-    document.getElementById("mobileNav").classList.toggle("show");
-    document.getElementById("hamburger").classList.toggle("active");
+    const mobileNav = document.getElementById("mobileNav");
+    const hamburger = document.getElementById("hamburger");
+    
+    if (mobileNav) mobileNav.classList.toggle("show");
+    if (hamburger) hamburger.classList.toggle("active");
 }
 
 function closeMenu() {
-    document.getElementById("mobileNav").classList.remove("show");
-    document.getElementById("hamburger").classList.remove("active");
+    const mobileNav = document.getElementById("mobileNav");
+    const hamburger = document.getElementById("hamburger");
+    
+    if (mobileNav) mobileNav.classList.remove("show");
+    if (hamburger) hamburger.classList.remove("active");
 }
 
 // ====== 3. MODAL VIEWERS (CV & QUALIFICATIONS) ======
@@ -102,7 +108,7 @@ function closeQualModal() {
     }
 }
 
-// Global listener to close modals when clicking outside the window containers
+// Global listener to close modals when clicking outside container windows
 window.addEventListener('click', function(event) {
     const cvModal = document.getElementById("cvModal");
     const qualModal = document.getElementById('qualModal');
@@ -140,9 +146,15 @@ if (toggleBtn) {
 
 // ====== 5. SUPABASE INITIALIZATION ======
 const SUPABASE_URL = "https://pfmikcrcudbxxmzxtclo.supabase.co";
-const SUPABASE_ANON_KEY ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmbWlrY3JjdWRieHhtenh0Y2xvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzNjU4MDYsImV4cCI6MjA5OTk0MTgwNn0.MvnXh0-s6W7S7ziqP714fnCgYIBJmAYzmb1FAp8OhqQ";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmbWlrY3JjdWRieHhtenh0Y2xvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzNjU4MDYsImV4cCI6MjA5OTk0MTgwNn0.MvnXh0-s6W7S7ziqP714fnCgYIBJmAYzmb1FAp8OhqQ";
 
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let supabaseClient = null;
+
+if (typeof supabase !== 'undefined') {
+    supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+} else {
+    console.error("Supabase SDK not detected. Ensure the Supabase CDN script tag is included in your HTML.");
+}
 
 // ====== 6. FORM SUBMISSION EVENT LISTENER ======
 const contactForm = document.getElementById("contactForm");
@@ -150,27 +162,57 @@ if (contactForm) {
     contactForm.addEventListener("submit", async function(e) {
         e.preventDefault();
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
+        if (!supabaseClient) {
+            alert("Database connection is currently unavailable. Please try again later.");
+            return;
+        }
 
-        const { data, error } = await supabaseClient
-            .from('contacts')
-            .insert([
-                { 
-                    name: name, 
-                    email: email, 
-                    message: message,
-                    created_at: new Date().toISOString() 
-                }
-            ]);
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.textContent : "Send";
 
-        if (error) {
-            alert("Error sending message");
-            console.error("Supabase Error:", error.message);
-        } else {
-            alert("Message sent successfully!");
-            contactForm.reset();
+        // Collect Form Fields
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const messageInput = document.getElementById("message");
+
+        const name = nameInput ? nameInput.value : "";
+        const email = emailInput ? emailInput.value : "";
+        const message = messageInput ? messageInput.value : "";
+
+        // Provide immediate visual user feedback
+        if (submitBtn) {
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+        }
+
+        try {
+            const { data, error } = await supabaseClient
+                .from('contacts')
+                .insert([
+                    { 
+                        name: name, 
+                        email: email, 
+                        message: message,
+                        created_at: new Date().toISOString() 
+                    }
+                ]);
+
+            if (error) {
+                alert("Error sending message. Please check your network connection and try again.");
+                console.error("Supabase Error:", error.message);
+            } else {
+                alert("Message sent successfully!");
+                contactForm.reset();
+            }
+        } catch (err) {
+            console.error("Submission Error:", err);
+            alert("An unexpected error occurred. Please try again.");
+        } finally {
+            // Restore button state
+            if (submitBtn) {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
         }
     });
 }
