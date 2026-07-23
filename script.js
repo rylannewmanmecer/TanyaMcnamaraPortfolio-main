@@ -44,11 +44,20 @@ function getPdfUrl(pdfPath) {
 function openCvModal(pdfPath = 'Tanya_McNamara_CV.pdf') {
     const cvModal = document.getElementById("cvModal");
     const cvFrame = cvModal ? cvModal.querySelector('iframe') : null;
+    const mobileLink = document.getElementById('cvMobileLink'); // Optional fallback link if you added it
 
-    if (cvModal) {
-        if (cvFrame && pdfPath) {
-            cvFrame.src = getPdfUrl(pdfPath);
+    // If an event object was accidentally passed (e.g., from an inline event handler), fallback to default path
+    if (typeof pdfPath !== 'string') {
+        pdfPath = 'Tanya_McNamara_CV.pdf';
+    }
+
+    if (cvModal && cvFrame) {
+        cvFrame.src = getPdfUrl(pdfPath);
+
+        if (mobileLink) {
+            mobileLink.href = pdfPath;
         }
+
         cvModal.classList.add("active");
     }
 }
@@ -59,7 +68,9 @@ function closeCV() {
 
     if (cvModal) {
         cvModal.classList.remove("active");
-        if (cvFrame) cvFrame.src = ""; // Clear source to free memory
+        if (cvFrame) {
+            cvFrame.src = ""; // Clears the PDF source to stop background memory usage
+        }
     }
 }
 
@@ -67,9 +78,16 @@ function closeCV() {
 function openQualModal(pdfPath) {
     const modal = document.getElementById('qualModal');
     const iframe = document.getElementById('qualFrame');
+    const mobileLink = document.getElementById('qualMobileLink');
     
     if (modal && iframe) {
         iframe.src = getPdfUrl(pdfPath);
+        
+        // Dynamically update the direct link URL for mobile users
+        if (mobileLink) {
+            mobileLink.href = pdfPath;
+        }
+        
         modal.classList.add('active');
     }
 }
