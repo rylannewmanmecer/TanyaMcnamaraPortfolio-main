@@ -64,13 +64,20 @@ body.light {
 }
 
 header {
+   position: fixed;            /* Keep fixed at the top of the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;              /* Stays on top of all page content */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 10%;
+    padding: 15px 5%;
     background: var(--bg-main);
-    position: relative;
-    width: 100%;
+    transition: background-color 0.1s ease, padding 0.1s ease;
+}
+.page, main, section {
+    padding-top: 80px; /* Adjust based on header height */
 }
 
 .header-left {
@@ -817,3 +824,6 @@ nav a.active {
         height: 100%;
         border: none;
     }
+#mobileNav {
+    top: 60px; /* Adjust if your mobile nav menu drops down */
+}
