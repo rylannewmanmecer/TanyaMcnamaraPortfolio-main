@@ -229,46 +229,214 @@ nav a.active {
 }
 
 /* ==========================================
-   6. ABOUT SECTION
+   EXECUTIVE ABOUT SECTION STYLES
    ========================================== */
+
+/* Main Container Limit for Desktop Spacing */
 .about-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+}
+
+.section-title {
     text-align: center;
-    color: var(--accent-green);
+    margin-bottom: 40px;
 }
 
-.about-container h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
+.section-title h2 {
+    font-size: 2.2rem;
+    color: var(--text-main, #ffffff);
+    margin-bottom: 8px;
 }
 
-.about-img {
+.section-title p {
+    color: var(--accent-blue, #58a6ff);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 2-Column Layout Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Left Sidebar - Stat Cards */
+.about-sidebar {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--bg-card, #161b22);
+    border: 1px solid var(--border-color, #30363d);
+    border-left: 4px solid #58a6ff;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(88, 166, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    font-size: 20px;
+    color: #58a6ff;
+    flex-shrink: 0;
 }
 
-.about-img img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--accent-blue);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+.stat-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ffffff;
 }
 
-.about-text {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--text-main);
-    max-width: 750px;
-    margin: auto;
+.stat-info p {
+    margin: 3px 0 0 0;
+    font-size: 0.85rem;
+    color: #8b949e;
 }
 
-.about-text p {
+/* Quote Highlight Box */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(22, 27, 34, 0.6));
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    padding: 22px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 22px;
+    color: #58a6ff;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.highlight-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #c9d1d9;
+    font-style: italic;
+}
+
+/* Right Bio Column Cards */
+.about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bio-card {
+    background: var(--bg-card, #161b22);
+    border: 1px solid var(--border-color, #30363d);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.bio-card h3 {
+    font-size: 1.2rem;
+    color: #58a6ff;
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bio-card p {
+    margin: 0 0 12px 0;
+    line-height: 1.65;
+    color: #c9d1d9;
+    font-size: 0.98rem;
+    text-align: left; /* Restores readable left-aligned text */
+}
+
+.bio-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Skills Section Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 25px;
+}
+
+.skill-category-card {
+    background: var(--bg-card, #161b22);
+    border: 1px solid var(--border-color, #30363d);
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color, #30363d);
+}
+
+.category-header i {
+    font-size: 22px;
+    color: #58a6ff;
+}
+
+.category-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #c9d1d9;
+    font-size: 0.95rem;
+}
+
+.skill-list li i {
+    color: #3fb950; /* Clean healthcare green checkmark */
+    font-size: 14px;
+}
+
+/* Responsive Mobile Fallbacks */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==========================================
