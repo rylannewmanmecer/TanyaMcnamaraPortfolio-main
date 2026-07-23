@@ -25,18 +25,41 @@ function closeMenu() {
 }
 
 // ====== 3. MODAL VIEWERS (CV & QUALIFICATIONS) ======
+
+// Mobile Detection & Google Docs Viewer Helper
+function getPdfUrl(pdfPath) {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // Resolve path to full absolute URL required by Google Viewer
+        const absoluteUrl = new URL(pdfPath, window.location.href).href;
+        return `https://docs.google.com/viewer?url=${encodeURIComponent(absoluteUrl)}&embedded=true`;
+    }
+    
+    // Standard desktop iframe loading
+    return pdfPath + "#toolbar=0&navpanes=0";
+}
+
 // --- CV Modal ---
-function openCvModal() {
+function openCvModal(pdfPath = 'Tanya_McNamara_CV.pdf') {
     const cvModal = document.getElementById("cvModal");
+    const cvFrame = cvModal ? cvModal.querySelector('iframe') : null;
+
     if (cvModal) {
+        if (cvFrame && pdfPath) {
+            cvFrame.src = getPdfUrl(pdfPath);
+        }
         cvModal.classList.add("active");
     }
 }
 
 function closeCV() {
     const cvModal = document.getElementById("cvModal");
+    const cvFrame = cvModal ? cvModal.querySelector('iframe') : null;
+
     if (cvModal) {
         cvModal.classList.remove("active");
+        if (cvFrame) cvFrame.src = ""; // Clear source to free memory
     }
 }
 
@@ -46,8 +69,7 @@ function openQualModal(pdfPath) {
     const iframe = document.getElementById('qualFrame');
     
     if (modal && iframe) {
-        // #toolbar=0&navpanes=0 hides default browser download/print mechanics
-        iframe.src = pdfPath + "#toolbar=0&navpanes=0";
+        iframe.src = getPdfUrl(pdfPath);
         modal.classList.add('active');
     }
 }
@@ -99,11 +121,9 @@ if (toggleBtn) {
 }
 
 // ====== 5. SUPABASE INITIALIZATION ======
-// Define credentials
 const SUPABASE_URL = "https://pfmikcrcudbxxmzxtclo.supabase.co";
 const SUPABASE_ANON_KEY ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmbWlrY3JjdWRieHhtenh0Y2xvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzNjU4MDYsImV4cCI6MjA5OTk0MTgwNn0.MvnXh0-s6W7S7ziqP714fnCgYIBJmAYzmb1FAp8OhqQ";
 
-// Initialize the client (Creates the global variable)
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ====== 6. FORM SUBMISSION EVENT LISTENER ======
