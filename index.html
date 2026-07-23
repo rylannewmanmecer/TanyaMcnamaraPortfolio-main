@@ -11,36 +11,40 @@
 </head>
 <body>
 
-    <header>
-        <a class="logo">Tanya Mcnamara</a>
+<header>
+    <!-- LEFT GROUP: Theme Toggle + Logo -->
+    <div class="header-left">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#" class="logo">Tanya Mcnamara</a>
+    </div>
+
+    <!-- RIGHT GROUP: Social Icons + Hamburger Menu -->
+    <div class="header-right">
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/tanya-mcnamara-56391511b/" target="_blank">
+            <a href="https://www.linkedin.com/in/tanya-mcnamara-56391511b/" target="_blank" aria-label="LinkedIn">
                 <i class="fa-brands fa-linkedin"></i>
-                <span></span>
             </a>
-           
         </div>
         
-        <!-- HAMBURGER -->
+        <!-- HAMBURGER BUTTON -->
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        
-        <nav id="mobileNav">
-            <a href="#" class="nav-link active" onclick="showPage('home', this); closeMenu()">Home</a>
-            <a href="#" class="nav-link" onclick="showPage('about', this); closeMenu()">About Me</a>
-            <a href="#" class="nav-link" onclick="showPage('cv', this); closeMenu()">CV</a>
-            <a href="#" class="nav-link" onclick="showPage('work', this); closeMenu()">Qualifications</a>
-            <a href="#" class="nav-link" onclick="showPage('contact', this); closeMenu()">Contact</a>
-        </nav>
-        
-        <!-- MOVED INSIDE THE HEADER -->
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            <i class="fa-solid fa-moon"></i>
-        </button>
-    </header>
+    </div>
+
+    <!-- NAVIGATION MENU -->
+    <nav id="mobileNav">
+        <a href="#" class="nav-link active" onclick="showPage('home', this); closeMenu()">Home</a>
+        <a href="#" class="nav-link" onclick="showPage('about', this); closeMenu()">About Me</a>
+        <a href="#" class="nav-link" onclick="showPage('cv', this); closeMenu()">CV</a>
+        <a href="#" class="nav-link" onclick="showPage('work', this); closeMenu()">Qualifications</a>
+        <a href="#" class="nav-link" onclick="showPage('contact', this); closeMenu()">Contact</a>
+    </nav>
+</header>
 
     <!-- HOME PAGE -->
     <section id="home" class="page active">
