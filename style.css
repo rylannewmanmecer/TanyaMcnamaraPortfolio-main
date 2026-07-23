@@ -81,8 +81,9 @@ header {
 
 .header-right {
     display: flex;
+    flex-direction: row; /* Forces horizontal alignment */
     align-items: center;
-    gap: 18px;
+    gap: 16px;           /* Clean spacing between LinkedIn & Hamburger */
 }
 
 .logo {
@@ -123,17 +124,18 @@ nav a.active {
 .social-icons {
     display: flex;
     align-items: center;
-    gap: 20px;
+    margin: 0;          /* Prevents unwanted block margins */
+    padding: 0;
 }
 
 .social-icons a {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
     color: var(--text-main);
-    text-decoration: none; 
-    font-size: 18px;
-    transition: 0.3s ease;
+    font-size: 1.3rem;
+    text-decoration: none;
+    line-height: 1;
 }
 
 .social-icons a:hover {
@@ -675,15 +677,29 @@ nav a.active {
    13. MEDIA QUERIES (Mobile Responsiveness)
    ========================================== */
 @media (max-width: 768px) {
-    header {
+  header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         padding: 12px 20px;
+    }
+    .header-left, 
+    .header-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-right {
+        gap: 16px; /* Ensures a 16px gap on mobile specifically */
     }
 
     .hamburger {
         display: flex;
     }
 
-    nav {
+  nav {
         position: absolute;
         top: 65px;
         right: 20px;
@@ -704,6 +720,7 @@ nav a.active {
     nav.show {
         display: flex;
     }
+}
 
     .qualification-card,
     .project-card {
@@ -715,4 +732,3 @@ nav a.active {
         width: 100%;
         height: 200px;
     }
-}
