@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
+    <title>Tanya McNamara - Portfolio</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Link to Separate CSS Stylesheet -->
@@ -17,7 +17,7 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
             <i class="fa-solid fa-moon"></i>
         </button>
-        <a href="#" class="logo">Tanya Mcnamara</a>
+        <a href="#" class="logo">Tanya McNamara</a>
     </div>
 
     <!-- RIGHT GROUP: Social Icons + Hamburger Menu -->
@@ -124,135 +124,155 @@
         </div>
     </section>
 
-  <!-- CV PAGE -->
-<section id="cv" class="page">
-    <div class="cv-container">
-        <!-- HIGHLIGHTS -->
-        <div class="cv-highlights">
-            <div class="highlight-card">
-                <h3>🎓 Education & Professional Development</h3>
-                <p>
-                    <strong>Master of Business Administration (HRM)</strong><br>
-                    Dean’s Merit List (2026) – Australian Institute of Business<br><br>
-                    <strong>Graduate Certificate in Management</strong><br>
-                    Australian Institute of Business<br><br>
-                    <strong>4-Year Diploma of Nursing & Midwifery</strong><br>
-                    Kwa-Zulu Natal College of Nursing
-                </p>
-            </div>
+    <!-- CV PAGE -->
+    <section id="cv" class="page">
+        <div class="cv-container">
+            <!-- HIGHLIGHTS -->
+            <div class="cv-highlights">
+                <div class="highlight-card">
+                    <h3>🎓 Education & Professional Development</h3>
+                    <p>
+                        <strong>Master of Business Administration (HRM)</strong><br>
+                        Dean’s Merit List (2026) – Australian Institute of Business<br><br>
+                        <strong>Graduate Certificate in Management</strong><br>
+                        Australian Institute of Business<br><br>
+                        <strong>4-Year Diploma of Nursing & Midwifery</strong><br>
+                        Kwa-Zulu Natal College of Nursing
+                    </p>
+                </div>
 
-            <div class="highlight-card">
-                <h3>💻 Core Expertise & Skills</h3>
-                <p>
-                    <strong>Governance & Operations:</strong> Clinical Leadership, Risk Management, Auditing & Compliance, Service Design<br><br>
-                    <strong>Technical & Digital:</strong> Digital Health Platforms, Telehealth Systems, Data Reporting, Digitally Literate<br><br>
-                    <strong>Key Competencies:</strong> Strategic Planning, Change Management, Health Coaching, Workforce Uplift
-                </p>
+                <div class="highlight-card">
+                    <h3>💻 Core Expertise & Skills</h3>
+                    <p>
+                        <strong>Governance & Operations:</strong> Clinical Leadership, Risk Management, Auditing & Compliance, Service Design<br><br>
+                        <strong>Technical & Digital:</strong> Digital Health Platforms, Telehealth Systems, Data Reporting, Digitally Literate<br><br>
+                        <strong>Key Competencies:</strong> Strategic Planning, Change Management, Health Coaching, Workforce Uplift
+                    </p>
+                </div>
+                
+                <div class="highlight-card">
+                    <h3>💼 Professional Experience</h3>
+                    <p>
+                        <strong>Head of Clinical Care</strong><br>
+                        Symbol Group (2026–Present)<br><br>
+                        <strong>Independent Consultant</strong><br>
+                        Clinical Capability & Risk (2024–2026)<br><br>
+                        <strong>Clinical Service Delivery Lead</strong><br>
+                        Amplar Health / Medibank (2021–2024)
+                    </p>
+                </div>
             </div>
             
-            <div class="highlight-card">
-                <h3>💼 Professional Experience</h3>
-                <p>
-                    <strong>Head of Clinical Care</strong><br>
-                    Symbol Group (2026–Present)<br><br>
-                    <strong>Independent Consultant</strong><br>
-                    Clinical Capability & Risk (2024–2026)<br><br>
-                    <strong>Clinical Service Delivery Lead</strong><br>
-                    Amplar Health / Medibank (2021–2024)
-                </p>
+            <!-- BUTTONS CONTAINER -->
+            <div class="cv-btn-container">
+                <a href="./Tanya_McNamara_CV.pdf" download class="cv-btn download">
+                    <i class="fa-solid fa-download" style="margin-right: 8px;"></i> Download Full CV
+                </a>
+                <button class="cv-btn view" onclick="openCvModal('Tanya_McNamara_CV.pdf')">
+                    <i class="fa-solid fa-eye"></i> View CV
+                </button>
             </div>
         </div>
-        
-        <!-- BUTTONS CONTAINER -->
-        <div class="cv-btn-container">
-            <a href="./Tanya_McNamara_CV.pdf" download class="cv-btn download">
-                <i class="fa-solid fa-download" style="margin-right: 8px;"></i> Download Full CV
-            </a>
-            <button class="cv-btn view" onclick="openCvModal('Tanya_McNamara_CV.pdf')">
-    <i class="fa-solid fa-eye"></i> View CV
-</button>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- WORK / QUALIFICATIONS PAGE -->
     <section id="work" class="page section">
         <h1 style="text-align:center; margin-top:40px;">Qualifications</h1>
 
         <div class="work-container">
-          <!-- Card 1: MBA -->
-<div class="project-card qualification-card" onclick="openQualModal('documents/mba.pdf')">
-    <div class="project-image">
-        <img src="./images/mba.jpeg" alt="MBA Certificate">
-    </div>
-    <div class="project-content">
-        <h2>MBA</h2>
-        <p class="qual-desc">
-            Master of Business Administration specializing in Human Resource Management. Focused on strategic leadership, healthcare governance, and workforce operations.
-        </p>
-        <div class="project-links"></div>
-    </div>
-</div>
+            <!-- Card 1: MBA -->
+            <div class="project-card qualification-card" onclick="openQualModal('documents/mba.pdf')">
+                <div class="project-image">
+                    <img src="./images/mba.jpeg" alt="MBA Certificate">
+                </div>
+                <div class="project-content">
+                    <h2>MBA</h2>
+                    <p class="qual-desc">
+                        Master of Business Administration specializing in Human Resource Management. Focused on strategic leadership, healthcare governance, and workforce operations.
+                    </p>
+                    <div class="project-links"></div>
+                </div>
+            </div>
 
-<!-- Card 2: Merit -->
-<div class="project-card qualification-card" onclick="openQualModal('documents/merit.pdf')">
-    <div class="project-image">
-        <img src="./images/merit.jpeg" alt="Dean's Merit List Certificate">
-    </div>
-    <div class="project-content">
-        <h2>Merit List</h2>
-        <p class="qual-desc">
-            Recognized on the Dean's Merit List for achieving outstanding academic performance, maintaining excellence, and demonstrating exceptional dedication throughout the program.
-        </p>
-        <div class="project-links"></div>
-    </div>
-</div>
+            <!-- Card 2: Merit -->
+            <div class="project-card qualification-card" onclick="openQualModal('documents/merit.pdf')">
+                <div class="project-image">
+                    <img src="./images/merit.jpeg" alt="Dean's Merit List Certificate">
+                </div>
+                <div class="project-content">
+                    <h2>Merit List</h2>
+                    <p class="qual-desc">
+                        Recognized on the Dean's Merit List for achieving outstanding academic performance, maintaining excellence, and demonstrating exceptional dedication throughout the program.
+                    </p>
+                    <div class="project-links"></div>
+                </div>
+            </div>
 
-<!-- Card 3: Grad Cert -->
-<div class="project-card qualification-card" onclick="openQualModal('documents/grad.pdf')">
-    <div class="project-image">
-        <img src="./images/grad.jpeg" alt="Graduate Certificate">
-    </div>
-    <div class="project-content">
-        <h2>Grad Cert</h2>
-        <p class="qual-desc">
-            Postgraduate certification emphasizing specialized management frameworks, healthcare quality control, and advanced leadership methodologies.
-        </p>
-        <div class="project-links"></div>
-    </div>
-</div>
+            <!-- Card 3: Grad Cert -->
+            <div class="project-card qualification-card" onclick="openQualModal('documents/grad.pdf')">
+                <div class="project-image">
+                    <img src="./images/grad.jpeg" alt="Graduate Certificate">
+                </div>
+                <div class="project-content">
+                    <h2>Grad Cert</h2>
+                    <p class="qual-desc">
+                        Postgraduate certification emphasizing specialized management frameworks, healthcare quality control, and advanced leadership methodologies.
+                    </p>
+                    <div class="project-links"></div>
+                </div>
+            </div>
 
-<!-- Card 4: Nurse Diploma -->
-<div class="project-card qualification-card" onclick="openQualModal('documents/nurse.pdf')">
-    <div class="project-image">
-        <img src="./images/nurse.jpeg" alt="Nursing Diploma">
-    </div>
-    <div class="project-content">
-        <h2>Nurse Diploma</h2>
-        <p class="qual-desc">
-            Professional qualification in general nursing science, laying the groundwork for clinical governance, patient care excellence, and hands-on operational leadership.
-        </p>
-        <div class="project-links"></div>
-    </div>
-</div>
-        
-        <!-- QUALIFICATION FULL-VIEW MODAL -->
-       <div id="qualModal" class="cv-modal">
-    <div class="cv-modal-content">
-        <div class="cv-modal-header">
-            <h3>Qualification Document</h3>
-            <div style="display: flex; gap: 15px; align-items: center;">
-                <a id="qualMobileLink" href="#" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 14px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full
-                </a>
-                <span class="cv-close" onclick="closeQualModal()">&times;</span>
+            <!-- Card 4: Nurse Diploma -->
+            <div class="project-card qualification-card" onclick="openQualModal('documents/nurse.pdf')">
+                <div class="project-image">
+                    <img src="./images/nurse.jpeg" alt="Nursing Diploma">
+                </div>
+                <div class="project-content">
+                    <h2>Nurse Diploma</h2>
+                    <p class="qual-desc">
+                        Professional qualification in general nursing science, laying the groundwork for clinical governance, patient care excellence, and hands-on operational leadership.
+                    </p>
+                    <div class="project-links"></div>
+                </div>
             </div>
         </div>
-        <div class="cv-modal-body">
-            <iframe id="qualFrame" src="" unselectable="on" oncontextmenu="return false;"></iframe>
+    </section>
+
+    <!-- QUALIFICATION FULL-VIEW MODAL -->
+    <div id="qualModal" class="cv-modal">
+        <div class="cv-modal-content">
+            <div class="cv-modal-header">
+                <h3>Qualification Document</h3>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <a id="qualMobileLink" href="#" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 14px;">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full
+                    </a>
+                    <span class="cv-close" onclick="closeQualModal()">&times;</span>
+                </div>
+            </div>
+            <div class="cv-modal-body">
+                <iframe id="qualFrame" src="" unselectable="on" oncontextmenu="return false;"></iframe>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- FULL CV MODAL -->
+    <div id="cvModal" class="cv-modal">
+        <div class="cv-modal-content">
+            <div class="cv-modal-header">
+                <h3>Tanya McNamara – Full CV</h3>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <a id="cvMobileLink" href="Tanya_McNamara_CV.pdf" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 14px;">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full
+                    </a>
+                    <span class="cv-close" onclick="closeCV()">&times;</span>
+                </div>
+            </div>
+            <div class="cv-modal-body">
+                <iframe id="cvFrame" src=""></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- CONTACT PAGE -->
     <section id="contact" class="page">
@@ -260,16 +280,16 @@
             <h1>Get In Touch</h1>
             <p class="contact-subtitle">Feel free to reach out via email, WhatsApp, or the contact form below.</p>
             
-           <div class="contact-social">
-    <a href="mailto:your-email@example.com">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Email</span>
-    </a>
-    <a href="https://wa.me/yournumber" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span>WhatsApp</span>
-    </a>
-</div>
+            <div class="contact-social">
+                <a href="mailto:your-email@example.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="https://wa.me/yournumber" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
 
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
@@ -292,18 +312,6 @@
     <div class="footer">
         <!-- © 2026 Portfolio -->
     </div>
-
-    <!-- CV Modal Viewer Backdrop -->
-   <div class="cv-modal-header">
-    <h3>Tanya McNamara – Full CV</h3>
-    <div style="display: flex; gap: 15px; align-items: center;">
-        <!-- Direct opening link for mobile users -->
-        <a id="mobilePdfLink" href="#" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 14px;">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full
-        </a>
-        <span class="cv-close" onclick="closeModal()">&times;</span>
-    </div>
-</div>
 
     <!-- Add Supabase JS Library CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

@@ -43,10 +43,10 @@ function getPdfUrl(pdfPath) {
 // --- CV Modal ---
 function openCvModal(pdfPath = 'Tanya_McNamara_CV.pdf') {
     const cvModal = document.getElementById("cvModal");
-    const cvFrame = cvModal ? cvModal.querySelector('iframe') : null;
-    const mobileLink = document.getElementById('cvMobileLink'); // Optional fallback link if you added it
+    const cvFrame = document.getElementById("cvFrame");
+    const mobileLink = document.getElementById('cvMobileLink');
 
-    // If an event object was accidentally passed (e.g., from an inline event handler), fallback to default path
+    // Handle string fallback if event object is passed
     if (typeof pdfPath !== 'string') {
         pdfPath = 'Tanya_McNamara_CV.pdf';
     }
@@ -64,12 +64,12 @@ function openCvModal(pdfPath = 'Tanya_McNamara_CV.pdf') {
 
 function closeCV() {
     const cvModal = document.getElementById("cvModal");
-    const cvFrame = cvModal ? cvModal.querySelector('iframe') : null;
+    const cvFrame = document.getElementById("cvFrame");
 
     if (cvModal) {
         cvModal.classList.remove("active");
         if (cvFrame) {
-            cvFrame.src = ""; // Clears the PDF source to stop background memory usage
+            cvFrame.src = ""; // Clears PDF memory
         }
     }
 }
