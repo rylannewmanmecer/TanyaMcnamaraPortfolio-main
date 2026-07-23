@@ -811,4 +811,14 @@ nav a.active {
     font-size: 1.2rem !important;
     color: var(--accent-blue) !important;
 }
+.cv-modal-content {
+        width: 95% !important;
+        height: 90vh !important;
+        margin: auto;
+    }
 
+    .cv-modal-body iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
