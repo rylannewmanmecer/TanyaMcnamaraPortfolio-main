@@ -156,6 +156,48 @@ if (typeof supabase !== 'undefined') {
     console.error("Supabase SDK not detected. Ensure the Supabase CDN script tag is included in your HTML.");
 }
 
+// ====== HELPER: CUSTOM TOAST NOTIFICATION ======
+let toastTimer = null;
+
+function showToast(title, message, isError = false) {
+    const toast = document.getElementById("toast");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastBody = document.getElementById("toastBody");
+    const toastIcon = document.getElementById("toastIcon");
+
+    if (!toast) return;
+
+    // Set Text Content
+    if (toastTitle) toastTitle.textContent = title;
+    if (toastBody) toastBody.textContent = message;
+
+    // Toggle Error / Success Styling
+    if (isError) {
+        toast.classList.add("error");
+        if (toastIcon) toastIcon.innerHTML = `<i class="fas fa-exclamation-circle"></i>`;
+    } else {
+        toast.classList.remove("error");
+        if (toastIcon) toastIcon.innerHTML = `<i class="fas fa-check-circle"></i>`;
+    }
+
+    // Display Toast
+    toast.classList.add("show");
+
+    // Clear any active dismiss timer
+    if (toastTimer) clearTimeout(toastTimer);
+
+    // Auto-hide after 4 seconds
+    toastTimer = setTimeout(() => {
+        closeToast();
+    }, 4000);
+}
+
+function closeToast() {
+    const toast = document.getElementById("toast");
+    if (toast) toast.classList.remove("show");
+}
+
+
 // ====== 6. FORM SUBMISSION EVENT LISTENER ======
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
@@ -163,7 +205,7 @@ if (contactForm) {
         e.preventDefault();
 
         if (!supabaseClient) {
-            alert("Database connection is currently unavailable. Please try again later.");
+            showToast("Service Unavailable", "Database connection is currently offline.", true);
             return;
         }
 
@@ -179,7 +221,7 @@ if (contactForm) {
         const email = emailInput ? emailInput.value : "";
         const message = messageInput ? messageInput.value : "";
 
-        // Provide immediate visual user feedback
+        // Provide immediate button feedback
         if (submitBtn) {
             submitBtn.textContent = "Sending...";
             submitBtn.disabled = true;
@@ -198,15 +240,15 @@ if (contactForm) {
                 ]);
 
             if (error) {
-                alert("Error sending message. Please check your network connection and try again.");
+                showToast("Submission Failed", "Error sending message. Please try again.", true);
                 console.error("Supabase Error:", error.message);
             } else {
-                alert("Message sent successfully!");
+                showToast("Message Sent!", "Thank you for reaching out. I'll get back to you soon.");
                 contactForm.reset();
             }
         } catch (err) {
             console.error("Submission Error:", err);
-            alert("An unexpected error occurred. Please try again.");
+            showToast("Unexpected Error", "An error occurred. Please try again later.", true);
         } finally {
             // Restore button state
             if (submitBtn) {

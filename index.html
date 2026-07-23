@@ -373,6 +373,19 @@
         <!-- © 2026 Portfolio -->
     </div>
 
+    <!-- SUCCESS / ERROR TOAST POPUP -->
+<div id="toast" class="toast">
+    <div class="toast-content">
+        <div class="toast-icon" id="toastIcon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-message">
+            <h4 id="toastTitle">Success!</h4>
+            <p id="toastBody">Your message has been sent successfully.</p>
+        </div>
+        <button class="toast-close" onclick="closeToast()">&times;</button>
+    </div>
+</div>
     <!-- Add Supabase JS Library CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Custom Application Logic Separate JS File -->
