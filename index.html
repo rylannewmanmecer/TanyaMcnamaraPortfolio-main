@@ -6,10 +6,8 @@
     <title>Tanya McNamara - Portfolio</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Link to Separate CSS Stylesheet -->
-    <!-- Add a version tag like ?v=1.1 to force browsers to reload -->
-<link rel="stylesheet" href="style.css?v=1.1">
-<script src="script.js?v=1.1"></script>
+    <!-- Link to Separate CSS Stylesheet with Cache-Busting Version -->
+    <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 <body>
 
@@ -105,8 +103,6 @@
                         <p>Emergency & Governance Specialist</p>
                     </div>
                 </div>
-
-            
             </div>
 
             <!-- RIGHT COLUMN: DETAILED BIO -->
@@ -230,7 +226,7 @@
                 <a href="./Tanya_McNamara_CV.pdf" download class="cv-btn download">
                     <i class="fa-solid fa-download" style="margin-right: 8px;"></i> Download Full CV
                 </a>
-                <button class="cv-btn view" onclick="openCvModal('Tanya_McNamara_CV.pdf')">
+                <button type="button" class="cv-btn view" onclick="openCvModal('Tanya_McNamara_CV.pdf')">
                     <i class="fa-solid fa-eye"></i> View CV
                 </button>
             </div>
@@ -347,7 +343,7 @@
                     <i class="fa-solid fa-envelope"></i>
                     <span>Email</span>
                 </a>
-                <a href="https://wa.me/+61 400 275 705" target="_blank">
+                <a href="https://wa.me/61400275705" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i>
                     <span>WhatsApp</span>
                 </a>
@@ -376,21 +372,22 @@
     </div>
 
     <!-- SUCCESS / ERROR TOAST POPUP -->
-<div id="toast" class="toast">
-    <div class="toast-content">
-        <div class="toast-icon" id="toastIcon">
-            <i class="fas fa-check-circle"></i>
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <div class="toast-icon" id="toastIcon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="toast-message">
+                <h4 id="toastTitle">Success!</h4>
+                <p id="toastBody">Your message has been sent successfully.</p>
+            </div>
+            <button type="button" class="toast-close" onclick="closeToast()">&times;</button>
         </div>
-        <div class="toast-message">
-            <h4 id="toastTitle">Success!</h4>
-            <p id="toastBody">Your message has been sent successfully.</p>
-        </div>
-        <button class="toast-close" onclick="closeToast()">&times;</button>
     </div>
-</div>
+
     <!-- Add Supabase JS Library CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- Custom Application Logic Separate JS File -->
-    <script src="script.js"></script>
+    <!-- Custom Application Logic JS File -->
+    <script src="script.js?v=1.1"></script>
 </body>
 </html>
