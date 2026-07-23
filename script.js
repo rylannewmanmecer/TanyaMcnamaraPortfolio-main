@@ -221,7 +221,7 @@ if (contactForm) {
         const email = emailInput ? emailInput.value : "";
         const message = messageInput ? messageInput.value : "";
 
-        // Provide immediate button feedback
+        
         if (submitBtn) {
             submitBtn.textContent = "Sending...";
             submitBtn.disabled = true;
@@ -238,6 +238,7 @@ if (contactForm) {
                         created_at: new Date().toISOString() 
                     }
                 ]);
+
 
             if (error) {
                 showToast("Submission Failed", "Error sending message. Please try again.", true);
